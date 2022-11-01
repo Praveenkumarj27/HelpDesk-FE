@@ -43,7 +43,7 @@ function Query() {
                 <thead>
                   <tr style={{ color: "black" }}>
                     <th>#</th>
-                    <th>Track Id</th>
+                    <th>Ticket Id</th>
                     <th>Query Type</th>
                     <th>Query Title</th>
                   </tr>

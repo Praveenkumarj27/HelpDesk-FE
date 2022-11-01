@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,10 +16,18 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { url } from "../Api/api";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { IconButton, InputAdornment } from "@mui/material";
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const [showPwd, setShowPwd] = useState(true);
+
+  const handleShowPassword = () => {
+    setShowPwd(!showPwd);
+  };
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -82,7 +90,7 @@ export default function SignIn() {
           </Avatar> */}
 
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
           <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 1 }}>
           <Grid container spacing={2}>
@@ -132,10 +140,23 @@ export default function SignIn() {
                 required
                 fullWidth
                 name="password"
-                type="password"
+                type={!showPwd ? "text" : "password"}
                 id="password"
                 onChange={formik.handleChange}
                 autoComplete="current-password"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowPassword}>
+                        {showPwd === false ? (
+                          <VisibilityIcon />
+                        ) : (
+                          <VisibilityOffIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             </Grid>

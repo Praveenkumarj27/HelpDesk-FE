@@ -13,19 +13,25 @@ import EmailIcon from "@mui/icons-material/Email";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { useFormik } from "formik";
 import { url } from "../Api/api";
-
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { IconButton, InputAdornment } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const theme = createTheme();
 
 export default function SignUp() {
+  const [showPwd, setShowPwd] = useState(true);
+
+  const handleShowPassword = () => {
+    setShowPwd(!showPwd);
+  };
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -50,6 +56,9 @@ export default function SignUp() {
         errors.password = "Required";
       } else if (values.password.length < 8) {
         errors.password = "Password length should be morethan 8Character";
+      }
+      if (!values.typeOfUser) {
+        errors.email = "Required";
       }
       return errors;
     },
@@ -84,7 +93,7 @@ export default function SignUp() {
             <EmailIcon />
           </Avatar> */}
           <Typography component="h1" variant="h5">
-            Sign up
+            Sign Up
           </Typography>
           <Box
             component="form"
@@ -165,10 +174,23 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  type="password"
+                  type={!showPwd ? "text" : "password"}
                   id="password"
                   autoComplete="new-password"
                   onChange={formik.handleChange}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton onClick={handleShowPassword}>
+                          {showPwd === false ? (
+                            <VisibilityIcon />
+                          ) : (
+                            <VisibilityOffIcon />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
 
@@ -215,11 +237,7 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            {/* <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link to="/">Already have an account? Sign in</Link>
-              </Grid>
-            </Grid> */}
+
              <Grid container>
               <Grid item xs>
               </Grid>
