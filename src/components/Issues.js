@@ -61,7 +61,7 @@ function Issues() {
                 <>
                   <div style={{ textAlign: "left", paddingTop: "5px" }}>
                     <h2 style={{ textAlign: "center",fontFamily: "Augestina" }}>
-                      Welcome to Zen Desk!
+                      Welcome to HelpDesk !
                     </h2>
                     <div style={{ marginTop: "20px" }}>
                       <strong>Issue Title :</strong> {data.issueTitle}

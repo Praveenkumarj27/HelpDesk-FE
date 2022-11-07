@@ -21,7 +21,7 @@ const Sidebar = ({ pageName, setPageName }) => {
             fontFamily: "Freehand",
           }}
         >
-          Zendesk
+         HelpDesk
         </h2>
         {role === "admin" ? (
           <NavLink

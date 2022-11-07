@@ -59,7 +59,7 @@ function Status() {
                     fontFamily: "Augestina"
                   }}
                 >
-                  <h2 style={{ textAlign: "center", marginTop: "20px" }}>Welcome to Zen Desk!</h2>
+                  <h2 style={{ textAlign: "center", marginTop: "20px" }}>Welcome to HelpDesk!</h2>
                   
                     <b >Issue Title :</b> {data.issueTitle}
                  
