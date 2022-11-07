@@ -208,9 +208,9 @@ export default function SignUp() {
                     onChange={formik.handleChange}
                   />
                   <FormControlLabel
-                    value="student"
+                    value="user"
                     control={<Radio />}
-                    label="Student"
+                    label="User"
                     onChange={formik.handleChange}
                   />
                 </RadioGroup>

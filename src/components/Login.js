@@ -31,21 +31,21 @@ export default function SignIn() {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
 
     validate: (values) => {
       const errors = {};
 
-      if (!values.username) {
-        errors.username = "Required";
+      if (!values.email) {
+        errors.email = "Required";
       }
-      if (values.username.length === 0) {
-        errors.username = "Required";
-      } else if (values.username.length < 5) {
-        errors.username = "Username length should be morethan 5Character";
-      }
+      // if (values.username.length === 0) {
+      //   errors.username = "Required";
+      // } else if (values.username.length < 5) {
+      //   errors.username = "Username length should be morethan 5Character";
+      // }
       if (values.password.length === 0) {
         errors.password = "Required";
       } else if (values.password.length < 8) {
@@ -106,16 +106,16 @@ export default function SignIn() {
                   color: "#7e8e9f",
                 }}
               >
-                User Name
+                Email
               </Typography>
               <TextField
                 size="small"
                 margin="normal"
                 required
                 fullWidth
-                id="username"
-                name="username"
-                autoComplete="username"
+                id="email"
+                name="email"
+                autoComplete="email"
                 onChange={formik.handleChange}
               />
             </Grid>
