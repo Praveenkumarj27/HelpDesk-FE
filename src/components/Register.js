@@ -49,8 +49,8 @@ export default function SignUp() {
       }
       if (values.username.length == 0) {
         errors.username = "Required";
-      } else if (values.username.length < 5) {
-        errors.username = "Username length should be morethan 5Character";
+      } else if (values.username.length < 3) {
+        errors.username = "Username length should be morethan 3 Character";
       }
       if (values.password.length === 0) {
         errors.password = "Required";
